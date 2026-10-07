@@ -1,0 +1,17 @@
+# Meus livros (CRUD front-end)
+
+Aplicação responsiva (HTML, CSS com Flexbox/Grid e JavaScript puro) com as quatro operações de um CRUD:
+
+- Create: botão "Novo livro"
+- Read: grade de livros, com busca e filtro por status
+- Update: botão "Editar" em cada livro
+- Delete: botão "Excluir" (pede confirmação)
+
+Os dados ficam no localStorage do navegador. As chamadas ao back-end estão comentadas em `script.js`, dentro das funções `apiListar`, `apiCriar`, `apiAtualizar` e `apiExcluir`.
+
+## Como publicar
+
+1. Crie um repositório no GitHub e envie estes arquivos (`index.html`, `style.css`, `script.js`) na raiz.
+2. Na Vercel, clique em "Add New > Project" e importe o repositório.
+3. Deixe as configurações padrão (é um site estático, sem build) e clique em "Deploy".
+4. Abra o link gerado pela Vercel para ver a aplicação na internet.

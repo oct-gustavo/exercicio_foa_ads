@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meus livros</title>
+  <meta name="description" content="Cadastre, consulte, edite e exclua os livros da sua estante.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="pagina">
+
+    <header class="topo">
+      <div>
+        <h1>Meus livros</h1>
+        <p class="contador" id="contador">0 livros na estante</p>
+      </div>
+      <button type="button" class="botao botao-principal" id="btn-novo">Novo livro</button>
+    </header>
+
+    <section class="barra" aria-label="Busca e filtros">
+      <div class="campo-busca">
+        <label for="busca" class="so-leitor">Buscar por título ou autor</label>
+        <input type="search" id="busca" placeholder="Buscar por título ou autor" autocomplete="off">
+      </div>
+      <div class="filtros" id="filtros" role="group" aria-label="Filtrar por status">
+        <button type="button" class="filtro" data-filtro="todos" aria-pressed="true">Todos</button>
+        <button type="button" class="filtro" data-filtro="quero" aria-pressed="false">Quero ler</button>
+        <button type="button" class="filtro" data-filtro="lendo" aria-pressed="false">Lendo</button>
+        <button type="button" class="filtro" data-filtro="lido" aria-pressed="false">Lido</button>
+      </div>
+    </section>
+
+    <main>
+      <ul class="grade" id="lista"></ul>
+
+      <div class="vazio" id="vazio" hidden>
+        <h2 id="vazio-titulo">Sua estante está vazia</h2>
+        <p id="vazio-texto">Cadastre o primeiro livro para começar.</p>
+        <button type="button" class="botao botao-principal" id="btn-vazio">Cadastrar livro</button>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="dialogo-form" aria-labelledby="form-titulo">
+    <form id="form" novalidate>
+      <h2 id="form-titulo">Novo livro</h2>
+
+      <div class="campo">
+        <label for="f-titulo">Título</label>
+        <input type="text" id="f-titulo" name="titulo" maxlength="120" required placeholder="Dom Casmurro">
+        <p class="erro" id="erro-titulo" role="alert"></p>
+      </div>
+
+      <div class="campo">
+        <label for="f-autor">Autor</label>
+        <input type="text" id="f-autor" name="autor" maxlength="80" required placeholder="Machado de Assis">
+        <p class="erro" id="erro-autor" role="alert"></p>
+      </div>
+
+      <div class="campo">
+        <label for="f-status">Status</label>
+        <select id="f-status" name="status">
+          <option value="quero">Quero ler</option>
+          <option value="lendo">Lendo</option>
+          <option value="lido">Lido</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label for="f-obs">Observações</label>
+        <textarea id="f-obs" name="observacao" rows="3" maxlength="200" placeholder="O que você achou, onde parou, quem indicou"></textarea>
+      </div>
+
+      <div class="acoes-form">
+        <button type="button" class="botao" id="btn-cancelar">Cancelar</button>
+        <button type="submit" class="botao botao-principal" id="btn-salvar">Salvar livro</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="dialogo-excluir" aria-labelledby="excluir-titulo">
+    <div class="confirmar">
+      <h2 id="excluir-titulo">Excluir livro</h2>
+      <p id="excluir-texto"></p>
+      <div class="acoes-form">
+        <button type="button" class="botao" id="btn-manter">Manter livro</button>
+        <button type="button" class="botao botao-perigo" id="btn-excluir">Excluir livro</button>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
